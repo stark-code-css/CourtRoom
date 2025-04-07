@@ -1,0 +1,49 @@
+@CourtRoom_HostAddress = http://localhost:5205
+
+GET {{CourtRoom_HostAddress}}/PaymentDetail
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4gVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE3NDQzOTE1NDMsImlzcyI6InNoaXZhIiwiYXVkIjoic3RhcmsifQ.X_m6tFfpgPqCdoKnGWQPiWzMzKkQBZ-giQ_tENTurq0
+
+###
+GET {{CourtRoom_HostAddress}}/PaymentDetail/1
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4gVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE3NDQzOTE1NDMsImlzcyI6InNoaXZhIiwiYXVkIjoic3RhcmsifQ.X_m6tFfpgPqCdoKnGWQPiWzMzKkQBZ-giQ_tENTurq0
+
+###
+POST {{CourtRoom_HostAddress}}/PaymentDetail
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4gVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE3NDQzOTE1NDMsImlzcyI6InNoaXZhIiwiYXVkIjoic3RhcmsifQ.X_m6tFfpgPqCdoKnGWQPiWzMzKkQBZ-giQ_tENTurq0
+
+{
+  "CostDeposited": 120.23,
+  "PaymentMode": "Online",
+  "PaymentRefNo": "12X789456123",
+  "DateOfDeposit": "2025-04-06",
+  "ReceiptNo": "789456321",
+  "DateOfCatBarLibFund": "2025-04-06",
+  "Remarks": "Payment Done!",
+  "CourtOrderId": 1
+}
+
+###
+DELETE {{CourtRoom_HostAddress}}/PaymentDetail/1
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4gVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE3NDQzOTE1NDMsImlzcyI6InNoaXZhIiwiYXVkIjoic3RhcmsifQ.X_m6tFfpgPqCdoKnGWQPiWzMzKkQBZ-giQ_tENTurq0
+
+
+###
+PUT {{CourtRoom_HostAddress}}/PaymentDetail/5
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4gVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE3NDQzOTE1NDMsImlzcyI6InNoaXZhIiwiYXVkIjoic3RhcmsifQ.X_m6tFfpgPqCdoKnGWQPiWzMzKkQBZ-giQ_tENTurq0
+
+{
+  "CostDeposited": 3456.0,
+  "PaymentMode": "UPI",
+  "PaymentRefNo": "12345",
+  "DateOfDeposit": "2025-04-07",
+  "ReceiptNo": "12345",
+  "DateOfCatBarLibFund": "2025-04-07",
+  "Remarks": "Something has been done!"
+}

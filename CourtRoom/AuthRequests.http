@@ -1,0 +1,22 @@
+@CourtRoom_HostAddress = http://localhost:5205
+
+POST {{CourtRoom_HostAddress}}/Auth/Register
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Name": "Cashier User",
+  "Email": "cashier",
+  "Password": "cashier123",
+  "Role": "Cashier"
+}
+
+###
+POST {{CourtRoom_HostAddress}}/Auth/Login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Email": "admin",
+  "Password": "admin123"
+}

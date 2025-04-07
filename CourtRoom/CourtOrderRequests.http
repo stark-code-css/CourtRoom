@@ -1,0 +1,51 @@
+@CourtRoom_HostAddress = http://localhost:5205
+
+###
+GET {{CourtRoom_HostAddress}}/CourtOrder
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4gVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE3NDQzOTE1NDMsImlzcyI6InNoaXZhIiwiYXVkIjoic3RhcmsifQ.X_m6tFfpgPqCdoKnGWQPiWzMzKkQBZ-giQ_tENTurq0
+
+###
+GET {{CourtRoom_HostAddress}}/CourtOrder/4
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4gVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE3NDQzOTE1NDMsImlzcyI6InNoaXZhIiwiYXVkIjoic3RhcmsifQ.X_m6tFfpgPqCdoKnGWQPiWzMzKkQBZ-giQ_tENTurq0
+
+###
+POST {{CourtRoom_HostAddress}}/CourtOrder
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4gVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE3NDQzOTE1NDMsImlzcyI6InNoaXZhIiwiYXVkIjoic3RhcmsifQ.X_m6tFfpgPqCdoKnGWQPiWzMzKkQBZ-giQ_tENTurq0
+
+{
+  "CourtNo": "123456",
+  "CaseNo": "789457",
+  "CauseListSlNo": "456321",
+  "Date": "2025-04-06",
+  "CourtDirection": "Dismissed",
+  "CostImposed": 123.20,
+  "ImposedOn": "Applicant",
+  "CashWhereToBeDeposited": "Bank"
+}
+
+
+###
+DELETE {{CourtRoom_HostAddress}}/CourtOrder/4
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4gVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE3NDQzOTE1NDMsImlzcyI6InNoaXZhIiwiYXVkIjoic3RhcmsifQ.X_m6tFfpgPqCdoKnGWQPiWzMzKkQBZ-giQ_tENTurq0
+
+###
+PUT {{CourtRoom_HostAddress}}/CourtOrder/1
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4gVXNlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE3NDQzOTE1NDMsImlzcyI6InNoaXZhIiwiYXVkIjoic3RhcmsifQ.X_m6tFfpgPqCdoKnGWQPiWzMzKkQBZ-giQ_tENTurq0
+
+{
+  "CourtNo": "75321",
+  "CaseNo": "12345",
+  "CauseListSlNo": "12345",
+  "Date": "2025-04-07",
+  "CourtDirection": "Do something!",
+  "CostImposed": 3456.7,
+  "CashWhereToBeDeposited": "Post Office",
+  "ImposedOn": "Recipient"
+}

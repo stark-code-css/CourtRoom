@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseUrls("http://*:8080");
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
@@ -52,6 +53,11 @@ builder.Services.AddAuthentication("Bearer")
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
+
+app.MapGet("/", () => "Hello from CourtRoom!");
+
+
+
 
 if (app.Environment.IsDevelopment())
 {

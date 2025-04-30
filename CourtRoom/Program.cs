@@ -15,7 +15,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "MyCorsPolicy", policy =>
     {
-        policy.WithOrigins(["http://localhost:5173, https://courtroom-eight.vercel.app"]);
+        policy.WithOrigins("https://courtroom-eight.vercel.app");
         policy.AllowAnyHeader();
         policy.AllowAnyMethod();
         policy.AllowCredentials();

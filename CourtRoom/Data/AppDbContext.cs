@@ -16,5 +16,13 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             .WithOne(p => p.CourtOrder)
             .HasForeignKey<PaymentDetail>(p => p.CourtOrderId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<CourtOrder>()
+            .HasIndex(c => c.CaseNo)
+            .IsUnique();
+
+        modelBuilder.Entity<AppUser>()
+            .HasIndex(u => u.Email)
+            .IsUnique();
     }
 }

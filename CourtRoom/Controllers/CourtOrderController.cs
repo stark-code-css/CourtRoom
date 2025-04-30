@@ -51,7 +51,7 @@ public class CourtOrderController(AppDbContext context) : ControllerBase
 
             return Ok(new
             {
-                sucess = true,
+                success = true,
                 message = "Court Orders retrieved successfully.",
                 data = courtOrderDtos
             });
@@ -110,7 +110,7 @@ public class CourtOrderController(AppDbContext context) : ControllerBase
             );
             return Ok(new
             {
-                sucess = true,
+                success = true,
                 message = "Court Orders retrieved successfully.",
                 data = courtOrderDtos
             });

@@ -6,6 +6,7 @@ using CourtRoom.Data;
 using CourtRoom.Dtos.AuthDtos;
 using CourtRoom.Models;
 using CourtRoom.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -23,11 +24,21 @@ public class AuthController(AppDbContext context, IAuthService authService, IOpt
     private readonly JwtSettings _jwtSettings = jwtOptions.Value;
 
     [HttpPost("Register")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Register(RegisterAppUserDto dto)
     {
         try
         {
             var hashedPassword = _authService.HashPassword(dto.Email, dto.Password);
+
+            if (dto.Role != "CourtMaster" && dto.Role != "Cashier")
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "You can only register a CourtMaster or a Cashier (case-sensitive)."
+                });
+            }
 
             AppUser appUser = new()
             {
@@ -39,11 +50,19 @@ public class AuthController(AppDbContext context, IAuthService authService, IOpt
 
             _context.AppUsers.Add(appUser);
             await _context.SaveChangesAsync();
-            return Ok("User registered");
+            return Ok(new
+            {
+                success = true,
+                message = "User registered successfully."
+            });
         }
         catch (Exception e)
         {
-            return BadRequest(e.Message);
+            return BadRequest(new
+            {
+                success = false,
+                message = e.Message
+            });
         }
     }
 
@@ -81,12 +100,135 @@ public class AuthController(AppDbContext context, IAuthService authService, IOpt
             {
                 name = existingUser.Name,
                 email = existingUser.Email,
+                role = existingUser.Role,
                 token = new JwtSecurityTokenHandler().WriteToken(token),
             });
         }
         catch (Exception e)
         {
             return BadRequest(e.Message);
+        }
+    }
+
+    [HttpGet]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> GetUserInfo()
+    {
+        try
+        {
+            var users = await _context.AppUsers.Select(u=>new {u.Id, u.Name, u.Email, u.Role}).ToListAsync();
+            return Ok(new {
+                success = true,
+                message = "All users retrieved successfully.",
+                data = users
+            });
+        }
+        catch (Exception e)
+        {
+            return BadRequest(new
+            {
+                success = false,
+                message = e.Message
+            });
+        }
+    }
+
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        try
+        {
+            var user = await _context.AppUsers.FirstOrDefaultAsync(u => u.Id == id);
+            if (user == null) return NotFound("User Not Found");
+            _context.AppUsers.Remove(user);
+            await _context.SaveChangesAsync();
+            return Ok(new
+            {
+                success = true,
+                message = "User deleted successfully."
+            });
+        }
+        catch (Exception e)
+        {
+            return BadRequest(new
+            {
+                success = false,
+                message = e.Message
+            });
+        }
+    }
+
+    [HttpPut("ResetPassword")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> ResetPassword(ResetPasswordDto dto)
+    {
+        try
+        {
+            var user = await _context.AppUsers.FirstOrDefaultAsync(u => u.Email == dto.Email);
+            if (user == null) return NotFound(new
+            {
+                success = false,
+                message = "User Not Found"
+            });
+
+            user.Password = _authService.HashPassword(dto.Email, "12345678");
+            _context.AppUsers.Update(user);
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                success = true,
+                message = "Password reset successfully."
+            });
+        }
+        catch (Exception e)
+        {
+            return BadRequest(new
+            {
+                success = false,
+                message = e.Message
+            });
+        }
+    }
+
+    [HttpPut("ChangePassword")]
+    [Authorize(Roles = "Admin, Cashier, CourtMaster")]
+    public async Task<IActionResult> ChangePassword(ChangePasswordDto dto)
+    {
+        try
+        {
+            var user = await _context.AppUsers.FirstOrDefaultAsync(u => u.Email == dto.Email);
+            if (user == null)
+                return NotFound(new
+                {
+                    success = false,
+                    message = "User Not Found"
+                });
+
+            var isCorrectOldPassword = _authService.VerifyHashedPassword(dto.Email, dto.OldPassword, user.Password);
+            if (!isCorrectOldPassword) return Unauthorized(new
+            {
+                success = false,
+                message = "Old password does not match"
+            });
+            
+            user.Password = _authService.HashPassword(dto.Email, dto.NewPassword);
+            _context.AppUsers.Update(user);
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                success = true,
+                message = "Password changed successfully."
+            });
+        }
+        catch (Exception e)
+        {
+            return BadRequest(new
+            {
+                success = false,
+                message = e.Message
+            });
         }
     }
 }

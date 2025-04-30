@@ -48,7 +48,7 @@ public class PaymentDetailController(AppDbContext context) : ControllerBase
 
             return Ok(new
             {
-                sucess = true,
+                success = true,
                 message = "Payment details retrieved successfully!",
                 data = paymentDetailDtos
             });
@@ -101,7 +101,7 @@ public class PaymentDetailController(AppDbContext context) : ControllerBase
 
             return Ok(new
             {
-                sucess = true,
+                success = true,
                 message = "Payment details retrieved successfully!",
                 data = paymentDetailsDto
             });
@@ -144,7 +144,7 @@ public class PaymentDetailController(AppDbContext context) : ControllerBase
 
             return Ok(new
             {
-                sucess = true,
+                success = true,
                 message = "Payment detail created successfully!",
                 data = paymentDetail
             });
@@ -179,7 +179,7 @@ public class PaymentDetailController(AppDbContext context) : ControllerBase
             await _context.SaveChangesAsync();
             return Ok(new
             {
-                sucess = true,
+                success = true,
                 message = "Payment detail deleted successfully!",
                 data = paymentDetail
             });
@@ -223,7 +223,7 @@ public class PaymentDetailController(AppDbContext context) : ControllerBase
         
             return Ok(new
             {
-                sucess = true,
+                success = true,
                 message = "Payment detail updated successfully!",
                 data = paymentDetails
             });

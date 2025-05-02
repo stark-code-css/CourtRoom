@@ -16,6 +16,7 @@ namespace CourtRoom.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[EnableCors("MyCorsPolicy")]
 public class AuthController(AppDbContext context, IAuthService authService, IOptions<JwtSettings> jwtOptions)
     : ControllerBase
 {

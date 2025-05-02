@@ -15,7 +15,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "MyCorsPolicy", policy =>
     {
-        policy.WithOrigins("http://localhost:5173/");
+        policy.WithOrigins("https://courtroom.onrender.com", "https://localhost:7143", "http://localhost:5205");
         policy.AllowAnyHeader();
         policy.AllowAnyMethod();
         policy.AllowCredentials();
